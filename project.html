@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="ShelfNest AI book recommender – Netflix‑style interface with genre sliders and official public covers"/>
+  <title>ShelfNest | Book Recommendation Website</title>
+  <style>
+    body { margin:0; padding:0; font-family:Georgia,serif; background:#f4f4f4; color:#333; }
+    header { background:#111; color:#eee; text-align:center; padding:2rem 1rem; }
+    header h1 { margin:0; font-size:2.5rem; }
+    header p { font-style:italic; font-size:1rem; }
+    .hero { padding:1rem; text-align:center; }
+    .hero button { background:#333; color:#fff; border:none; padding:0.75rem 1.5rem; font-size:1rem; border-radius:4px; cursor:pointer; transition:background 0.3s; }
+    .hero button:hover { background:#555; }
+    .section-title { margin:2rem 1rem 0.5rem; font-size:1.6rem; }
+    .carousel { display:flex; overflow-x:auto; gap:1rem; padding:1rem; scroll-behavior:smooth; }
+    a.book-card { flex:0 0 auto; width:160px; background:#fff; border-radius:6px; box-shadow:0 1px 5px rgba(0,0,0,0.1); transition:transform 0.3s; text-decoration:none; color:inherit; }
+    a.book-card:hover { transform:scale(1.05); }
+    .book-card img { width:100%; height:240px; object-fit:cover; border-radius:6px 6px 0 0; }
+    .book-meta { padding:0.5rem; font-size:0.9rem; color:#444; }
+    footer { background:#222; color:#bbb; padding:1rem; text-align:center; font-size:0.9rem; }
+    .footer-links { margin:1rem 0; }
+    .footer-links a { color:#aaa; text-decoration:none; display:inline-block; margin:0.25rem 1rem; font-size:0.9rem; }
+    .footer-links a:hover { color:#fff; text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ShelfNest</h1>
+    <p>Your AI-powered book recommendation companion</p>
+  </header>
+
+  <section class="hero">
+    <button id="startChat">Chat with Shelfie</button>
+  </section>
+
+  <main>
+    <!-- Top Picks -->
+    <h2 class="section-title">Top Picks for Online Readers</h2>
+    <div class="carousel">
+      <a href="https://archive.org/details/Tokillamockingbir_201802" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8231856-L.jpg"/>
+        <div class="book-meta">To Kill a Mockingbird<br>Harper Lee · ★★★★★ · English</div>
+      </a>
+      <a href="https://archive.org/details/sapiens-brief-history-of-humankind_202203" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/9360050-L.jpg"/>
+        <div class="book-meta">Sapiens<br>Yuval Noah Harari · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/alchemist00coeh_0" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8673833-L.jpg"/>
+        <div class="book-meta">The Alchemist<br>Paulo Coelho · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/educatedwestover00tara_202304" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10413965-L.jpg"/>
+        <div class="book-meta">Educated<br>Tara Westover · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/atomichabits00clear_202101" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10958330-L.jpg"/>
+        <div class="book-meta">Atomic Habits<br>James Clear · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/1984_orwell_202101" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/240726-L.jpg"/>
+        <div class="book-meta">1984<br>George Orwell · ★★★★★ · English</div>
+      </a>
+      <a href="https://archive.org/details/fahrenheit451_2016" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/9251984-L.jpg"/>
+        <div class="book-meta">Fahrenheit 451<br>Ray Bradbury · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/bookthiefzusak00mark_202201" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8421261-L.jpg"/>
+        <div class="book-meta">The Book Thief<br>Markus Zusak · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/becomingmichelle00obea" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/7984916-L.jpg"/>
+        <div class="book-meta">Becoming<br>Michelle Obama · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/powerofnow00toll_201602" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10548668-L.jpg"/>
+        <div class="book-meta">The Power of Now<br>Eckhart Tolle · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/where-crawdads-sing-delia-owens-2020" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/11153275-L.jpg"/>
+        <div class="book-meta">Where the Crawdads Sing<br>Delia Owens · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/midnight-library-haig-2020" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/12059362-L.jpg"/>
+        <div class="book-meta">The Midnight Library<br>Matt Haig · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/bravenewworldt01huxl" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8226191-L.jpg"/>
+        <div class="book-meta">Brave New World<br>Aldous Huxley · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/fouragreements00ruiz_2023" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10663274-L.jpg"/>
+        <div class="book-meta">The Four Agreements<br>Don Miguel Ruiz · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/subtleartofnotgiving00mans_2021" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10987520-L.jpg"/>
+        <div class="book-meta">The Subtle Art of Not Giving a F*ck<br>Mark Manson · ★★★★☆ · English</div>
+      </a>
+    </div>
+
+    <!-- Dystopian Stories -->
+    <h2 class="section-title">Dystopian Stories</h2>
+    <div class="carousel">
+      <a href="https://archive.org/details/1984_orwell_202101" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/153541-L.jpg"/>
+        <div class="book-meta">1984<br>George Orwell · ★★★★★ · English</div>
+      </a>
+      <a href="https://archive.org/details/bravenewworldt01huxl" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8226191-L.jpg"/>
+        <div class="book-meta">Brave New World<br>Aldous Huxley · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/fahrenheit451_2016" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/9251984-L.jpg"/>
+        <div class="book-meta">Fahrenheit 451<br>Ray Bradbury · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/handmaidstale00frau_1990" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8409116-L.jpg"/>
+        <div class="book-meta">The Handmaid’s Tale<br>Margaret Atwood · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/we-zamyatin-2020" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/7858231-L.jpg"/>
+        <div class="book-meta">We<br>Yevgeny Zamyatin · ★★★★☆ · English</div>
+      </a>
+    </div>
+
+    <!-- Thriller -->
+    <h2 class="section-title">Thriller</h2>
+    <div class="carousel">
+      <a href="https://archive.org/details/gonegirlflynngillian2012" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10579133-L.jpg"/>
+        <div class="book-meta">Gone Girl<br>Gillian Flynn · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/girlwithdragonto0000lari_2011" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8234093-L.jpg"/>
+        <div class="book-meta">The Girl with the Dragon Tattoo<br>Stieg Larsson · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/DaVinciCodeDanBrown2003" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10119913-L.jpg"/>
+        <div class="book-meta">The Da Vinci Code<br>Dan Brown · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/beforeigototosleep00watson_2009" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/9059187-L.jpg"/>
+        <div class="book-meta">Before I Go to Sleep<br>S.J. Watson · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/silentpatient00mike_2019" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/12782301-L.jpg"/>
+        <div class="book-meta">The Silent Patient<br>Alex Michaelides · ★★★★☆ · English</div>
+      </a>
+    </div>
+
+    <!-- Fiction -->
+    <h2 class="section-title">Fiction</h2>
+    <div class="carousel">
+      <a href="https://archive.org/details/normalpeople00rooney_2019" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10598743-L.jpg"/>
+        <div class="book-meta">Normal People<br>Sally Rooney · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/goldfinch00tarr_2013" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/11575727-L.jpg"/>
+        <div class="book-meta">The Goldfinch<br>Donna Tartt · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/littlefireseverywhere00ng_2017" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/9783952-L.jpg"/>
+        <div class="book-meta">Little Fires Everywhere<br>Celeste Ng · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/amancalledove00fred_2012" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10968822-L.jpg"/>
+        <div class="book-meta">A Man Called Ove<br>Fredrik Backman · ★★★★★ · English</div>
+      </a>
+      <a href="https://archive.org/details/kiterunner00hosseini_2006" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10968094-L.jpg"/>
+        <div class="book-meta">The Kite Runner<br>Khaled Hosseini · ★★★★★ · English</div>
+      </a>
+    </div>
+
+    <!-- Mystery -->
+    <h2 class="section-title">Mystery</h2>
+    <div class="carousel">
+      <a href="https://archive.org/details/biglittlelies00mori_2014" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10584162-L.jpg"/>
+        <div class="book-meta">Big Little Lies<br>Liane Moriarty · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/cuckooscalling0000robe" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10114566-L.jpg"/>
+        <div class="book-meta">The Cuckoo’s Calling<br>Robert Galbraith · ★★★★☆ · English</div>
+      </a>
+      <a href="https://www.gutenberg.org/ebooks/514" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8221256-L.jpg"/>
+        <div class="book-meta">The Woman in White<br>Wilkie Collins · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/girlonthetrainhawkinspaula2021" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10425812-L.jpg"/>
+        <div class="book-meta">The Girl on the Train<br>Paula Hawkins · ★★★★☆ · English</div>
+      </a>
+      <a href="https://archive.org/details/ackroydmurder0000agath_2006" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8232713-L.jpg"/>
+        <div class="book-meta">The Murder of Roger Ackroyd<br>Agatha Christie · ★★★★★ · English</div>
+      </a>
+    </div>
+
+    <!-- Hindi Reads -->
+    <h2 class="section-title">Hindi Reads</h2>
+    <div class="carousel">
+      <a href="https://archive.org/details/godaan-premchand-1996" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10914630-L.jpg"/>
+        <div class="book-meta">Godaan<br>Munshi Premchand · ★★★★★ · Hindi</div>
+      </a>
+      <a href="https://archive.org/details/gaban-premchand-1999" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8599411-L.jpg"/>
+        <div class="book-meta">Gaban<br>Munshi Premchand · ★★★★☆ · Hindi</div>
+      </a>
+      <a href="https://archive.org/details/gunahon-ka-devta-dharmvir-bharti-1996" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10929861-L.jpg"/>
+        <div class="book-meta">Gunahon Ka Devta<br>Dharamvir Bharti · ★★★★☆ · Hindi</div>
+      </a>
+      <a href="https://archive.org/details/mailaanchalphanishwharn-renu-2000" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10930080-L.jpg"/>
+        <div class="book-meta">Maila Aanchal<br>Phanishwar Nath Renu · ★★★★☆ · Hindi</div>
+      </a>
+      <a href="https://archive.org/details/raag-darbari-shrilal-shukla-1997" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10929550-L.jpg"/>
+        <div class="book-meta">Raag Darbari<br>Shrilal Shukla · ★★★★★ · Hindi</div>
+      </a>
+    </div>
+
+    <!-- Classic Literature -->
+    <h2 class="section-title">Classic Literature</h2>
+    <div class="carousel">
+      <a href="https://www.gutenberg.org/ebooks/345" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg"/>
+        <div class="book-meta">The Great Gatsby<br>F. Scott Fitzgerald · ★★★★★ · English</div>
+      </a>
+      <a href="https://www.gutenberg.org/ebooks/1342" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/8231996-L.jpg"/>
+        <div class="book-meta">Pride and Prejudice<br>Jane Austen · ★★★★★ · English</div>
+      </a>
+      <a href="https://www.gutenberg.org/ebooks/2701" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/10909247-L.jpg"/>
+        <div class="book-meta">Moby Dick<br>Herman Melville · ★★★★☆ · English</div>
+      </a>
+      <a href="https://www.gutenberg.org/ebooks/1399" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/7851961-L.jpg"/>
+        <div class="book-meta">Anna Karenina<br>Leo Tolstoy · ★★★★★ · English</div>
+      </a>
+      <a href="https://www.gutenberg.org/ebooks/135" target="_blank" class="book-card">
+        <img src="https://covers.openlibrary.org/b/id/5546156-L.jpg"/>
+        <div class="book-meta">Les Misérables<br>Victor Hugo · ★★★★☆ · English</div>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <strong><h2>Read more free books:</h2></strong><br>
+      <a href="https://www.gutenberg.org" target="_blank">Project Gutenberg</a>
+      <a href="https://books.google.com" target="_blank">Google Books</a>
+      <a href="https://manybooks.net" target="_blank">ManyBooks</a>
+      <a href="https://openlibrary.org" target="_blank">Open Library</a>      
+      <a href="https://archive.org" target="_blank">Internet Archive</a>
+      <a href="https://standardebooks.org" target="_blank">Standard Ebooks</a>
+      <a href="https://librivox.org" target="_blank">LibriVox (Audiobooks)</a>
+    </div>
+    <p>&copy; 2025 ShelfNest. All rights reserved.</p>
+  </footer>
+
+  <!-- Chatbot script unchanged -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "a866abbf-9de5-4903-a9b5-2ace2809810c",
+      region: "us-south",
+      serviceInstanceID: "1d2444d4-469b-4fae-9f41-b37e8c2a6bb1",
+      onLoad: async (instance) => {
+        window.watsonInstance = instance;
+        await instance.render();
+      }
+    };
+    setTimeout(function(){
+      const t = document.createElement('script');
+      t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+               (window.watsonAssistantChatOptions.clientVersion || 'latest') +
+               "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+    document.getElementById('startChat').addEventListener('click', () => {
+      if (window.watsonInstance) window.watsonInstance.openWindow();
+      else {
+        const wait = setInterval(() => {
+          if (window.watsonInstance) {
+            clearInterval(wait);
+            window.watsonInstance.openWindow();
+          }
+        }, 500);
+      }
+    });
+  </script>
+</body>
+</html>
